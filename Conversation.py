@@ -1,3 +1,6 @@
+#9-10-18
+#Choose Your Own Conversation
+
 import random
 a = random.randint(1,4)
 
