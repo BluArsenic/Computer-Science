@@ -1,6 +1,7 @@
 #Dominic Thomas
 #9-21-18
 #Guess The Song
+#I wasn't able to keep guessSong() because it wouldn't update the point system
 #On my honor, I have neither given nor recieved unauthorized aid
 
 import random
