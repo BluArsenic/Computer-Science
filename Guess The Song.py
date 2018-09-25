@@ -1,4 +1,8 @@
+#Dominic Thomas
+#9-21-18
 #Guess The Song
+#On my honor, I have neither given nor recieved unauthorized aid
+
 import random
 
 r = random.randint(1,30)
