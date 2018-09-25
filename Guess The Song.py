@@ -232,7 +232,7 @@ else:
 	c+=1
 
 #1 Thot, 2 Thot
-print("\n\nGot your girl in the kitchen cooking up some porSk chops")
+print("\n\nGot your girl in the kitchen cooking up some pork chops")
 # guessSong("1 thot 2 thot")
 song = input("What is this song?")
 song = song.lower()
@@ -316,7 +316,7 @@ else:
 	c+=1
 
 #Natural
-print("\n\nLiving you life cutthroat, you gotta be so cold")
+print("\n\nLiving your life cutthroat, you gotta be so cold")
 # guessSong("natural")
 song = input("What is this song?")
 song = song.lower()
@@ -456,7 +456,7 @@ else:
 	c+=1
 
 #Live Your Life
-print("\n\nYou're gonna be, a shini' star, in fancy clothes, and fancy cars")
+print("\n\nYou're gonna be, a shinin' star, in fancy clothes, and fancy cars")
 # guessSong("live your life")
 song = input("What is this song?")
 song = song.lower()
@@ -469,6 +469,5 @@ else:
 	p=p-1
 	c+=1
 
-if c == 30:
-	print("Congratulations! You made it through the game! Here's your score:")
-	print(p)
+print("Congratulations! You made it through the game! Here's your score:")
+print(p)
