@@ -10,6 +10,8 @@ w = 2 + int(input("Length: "))
 # h = 2 + int(input("Height: "))
 bombs = int(input("Bombs: "))
 m = [[0]*w for x in range(w)]
+m[0] = [*[1]*w]
+m[w-1] = [*[1]*w]
 check = []
 for x in range(bombs):
 	a = random.randrange(1,w-1)
@@ -47,11 +49,9 @@ for x in range(bombs):
 		m[a+1][b-1] +=1
 	else:
 		m[a+1][b-1] == "b"
-del m[0]
-del m[w-2]
-for x in range(w-2):
-	del m[x][0]
-	del m[x][w-2]
+for x in range(w-1):
+	m[x][0] = 1
+	m[x][w-1] = 1
 
 def reveal():
 	p[(y)-1][(x)-1] = m[(y)-1][(x)-1]
@@ -101,7 +101,7 @@ while t:
 			print(*i)
 		print("Remember, you have",bombs,"bombs in the board")
 	elif choice == "r":
-		p[y][x] = m[yy][xx]
+		p[y][x] = m[y][x]
 		# if m[y-1][x-1] == 0:
 		# 	check.append([x,y])
 		# 	print(check)
@@ -125,6 +125,9 @@ while t:
 					t = False
 				print(m[check[0][0]][check[0][1]])
 				print(check)
+				if p[y][x] == "b" and choice == "r":
+					print("Sorry. You lose! Better luck next time!")
+					t = False
 				# if m[check[0][0]][check[0][1]] == 0:
 				# 	check.append([((check[0][0])-1)-i][((check[0][1])-1)-j])
 				# 	p[((check[0][0])-1)-i][((check[0][1])-1)-j] == m[((check[0][0])-1)-i][((check[0][1])-1)-j]
@@ -135,9 +138,7 @@ while t:
 		for x in p[1:-1]:
 			print(*x[1:-1])
 		print("Remember, you have",bombs,"bombs in the board")
-	if p[yy][xx] == "b" and choice == "r":
-		print("Sorry. You lose! Better luck next time!")
-		t = False
+	
 	# for i in range(bombs):
 	# 	if m[a][b] == "f":
 	# 		print("You flagged all the bombs. You won!")
