@@ -4,6 +4,7 @@
 #Help from the Couch People from Squire (Jackson,Roshni)
 
 import random
+import numpy as np
 true = True
 
 #Solution Board
@@ -36,6 +37,9 @@ for x in range(length-1):
 for x in game[1:-1]:
 	print(*x[1:-1])
 
+count = game.count("■")
+print(count)
+
 #Game Mechanics
 while true:
 	xcoord = int(input("X: "))
@@ -43,9 +47,10 @@ while true:
 	choice = input("Flag (f) or Reveal (r)? ")
 	choice = choice.lower()
 	if choice == "r" and mine[ycoord][xcoord] == "B":
+		game[ycoord][xcoord] = mine[ycoord][xcoord]
 		print("You revealed a bomb. You lost!")
 		true = False
-	if choice == "r" and mine[ycoord][xcoord] == 0:
+	elif choice == "r" and mine[ycoord][xcoord] == 0:
 		game[ycoord][xcoord] = mine[ycoord][xcoord]
 		check = [(xcoord,ycoord)]
 		while len(check) > 0:
@@ -57,8 +62,21 @@ while true:
 					if mine[ycoord-i][xcoord-j] == 0 and game[ycoord-i][xcoord-j] == '■':
 						check.append((xcoord-j,ycoord-i))
 					game[ycoord-i][xcoord-j] = mine[ycoord-i][xcoord-j]
-	if choice == "r" and mine[ycoord][xcoord] > 0:
+	elif choice == "r" and mine[ycoord][xcoord] > 0:
 		game[ycoord][xcoord] = mine[ycoord][xcoord]
+		check = [(xcoord,ycoord)]
+		while len(check) > 0:
+			temp = check.pop(0)
+			xcoord = temp[0]
+			ycoord = temp[1]
+			for i in range(-1,2):
+				for j in range(-1,2):
+					if mine[ycoord-i][xcoord-j] == 0 and game[ycoord-i][xcoord-j] == '■':
+						if mine[ycoord-i][xcoord-j] == "B":
+							game[ycoord-i][xcoord-j] != mine[ycoord-i][xcoord-j]
+						else:
+							check.append((xcoord-j,ycoord-i))
+							game[ycoord-i][xcoord-j] = mine[ycoord-i][xcoord-j]
 	if choice == "r" and game[ycoord][xcoord] != "B" and game[ycoord][xcoord] == mine[ycoord][xcoord]:
 		print("You won!")
 		true = False
