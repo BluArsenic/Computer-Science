@@ -4,8 +4,8 @@
 #Help from the Couch People from Squire (Jackson,Roshni)
 
 import random
-import numpy as np
 true = True
+leave = True
 
 #Solution Board
 length = 2 + int(input("Length: "))
@@ -37,15 +37,24 @@ for x in range(length-1):
 for x in game[1:-1]:
 	print(*x[1:-1])
 
-count = game.count("■")
-print(count)
-
 #Game Mechanics
 while true:
+	quit = input("Quit (q) or Continue (c)? ")
+	quit = quit.lower()
+	if quit == "q":
+		true = False
+	elif quit == "c":
+		true = True
 	xcoord = int(input("X: "))
 	ycoord = int(input("Y: "))
-	choice = input("Flag (f) or Reveal (r)? ")
+	choice = input("Flag/unflag (f) or Reveal (r)? ")
 	choice = choice.lower()
+	# if choice == "f":
+	# 	game[ycoord][xcoord] = "F"
+	# elif choice == "f" and game[ycoord][xcoord] == "F":
+	# 	game[ycoord][xcoord] = "■"
+	# 	for x in game[1:-1]:
+	# 		print(*x[1:-1])
 	if choice == "r" and mine[ycoord][xcoord] == "B":
 		game[ycoord][xcoord] = mine[ycoord][xcoord]
 		print("You revealed a bomb. You lost!")
@@ -64,21 +73,23 @@ while true:
 					game[ycoord-i][xcoord-j] = mine[ycoord-i][xcoord-j]
 	elif choice == "r" and mine[ycoord][xcoord] > 0:
 		game[ycoord][xcoord] = mine[ycoord][xcoord]
-		check = [(xcoord,ycoord)]
-		while len(check) > 0:
-			temp = check.pop(0)
+		numbers = [(xcoord,ycoord)]
+		while len(numbers) > 0:
+			temp = numbers.pop(0)
 			xcoord = temp[0]
 			ycoord = temp[1]
 			for i in range(-1,2):
 				for j in range(-1,2):
-					if mine[ycoord-i][xcoord-j] == 0 and game[ycoord-i][xcoord-j] == '■':
-						if mine[ycoord-i][xcoord-j] == "B":
-							game[ycoord-i][xcoord-j] != mine[ycoord-i][xcoord-j]
-						else:
-							check.append((xcoord-j,ycoord-i))
-							game[ycoord-i][xcoord-j] = mine[ycoord-i][xcoord-j]
-	if choice == "r" and game[ycoord][xcoord] != "B" and game[ycoord][xcoord] == mine[ycoord][xcoord]:
+					if mine[ycoord-i][xcoord-j] =="B":
+						game[ycoord-i][xcoord-j] != mine[ycoord-i][xcoord-j]
+					else:
+						numbers.append((xcoord-j,ycoord-i))
+						game[ycoord-i][xcoord-j] = mine[ycoord-i][xcoord-j]
+	if choice == "r" and sum(x.count("■") for x in game) == bombs:
 		print("You won!")
 		true = False
+	count = sum(x.count("■") for x in game)
+	print(count)
 	for x in game[1:-1]:
 		print(*x[1:-1])
+	print("You have",bombs,"bombs in the board.")
