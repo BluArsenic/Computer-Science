@@ -56,14 +56,14 @@ def julia(xm, xx, ym, yy):
 			for i in range(maxIt):
 				if abs(z) > 2.0:
 					break
-				z = z**2 + c			
-			r = 0
+				z = z**5 + c			
+			r = 5*i
 			g = (i*256)%24
 			b = 256-i
 			image.putpixel((x,y),(r,g,b))
 
 #3rd Image
-xmin, xmax = -1.0, 1.0
+xmin, xmax = -1.15, 1.15
 ymin, ymax = xmin, xmax
 image = Image.new("RGB",(imgx,imgy))
 julia(xmin, xmax, ymin, ymax)
