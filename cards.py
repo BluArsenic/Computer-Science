@@ -32,9 +32,6 @@ class Card:
 class Deck:
 	def __init__(self):
 		self.deck = []
-	def __str__(self):
-		deck = self.deck
-		status = ""
 		for i in range(1,14):
 			for j in range(1,5):
 				if i is 1:
@@ -53,11 +50,22 @@ class Deck:
 					j = "Hearts"
 				elif j is 4:
 					j = "Spades"
-				deck.append((i,j))
-		random.shuffle(deck)	
-		for x in range(len(deck)):
-			status += "\n"+str(deck[x][0])+" of "+str(deck[x][1])
+				self.deck.append((i,j))
+		self.shuffle()
+
+	def shuffle(self):
+		random.shuffle(self.deck)	
+
+	def __str__(self):
+		status = ""		
+		for x in range(len(self.deck)):
+			status += "\n"+str(self.deck[x][0])+" of "+str(self.deck[x][1])
 		return status
 
 print(Card())
-print(Deck())
+mydeck = Deck()
+print(mydeck)
+print(mydeck)
+print(mydeck)
+print(mydeck)
+print(mydeck)
