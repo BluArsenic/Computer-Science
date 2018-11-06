@@ -4,7 +4,7 @@ class Card:
 	def __init__(self):
 		self.deck = []	
 	def __str__(self):
-		deck = self.deck
+		card = self.deck
 		status = ""
 		for i in range(1,14):
 			for j in range(1,5):
@@ -24,9 +24,9 @@ class Card:
 					j = "Hearts"
 				elif j is 4:
 					j = "Spades"
-				deck.append((i,j))
-		x = random.randrange(len(deck))
-		status = "\n"+str(deck[x][0])+" of "+str(deck[x][1])
+				card.append((i,j))
+		x = random.randrange(len(card))
+		status = "\n"+str(card[x][0])+" of "+str(card[x][1])
 		return status		
 
 class Deck:
@@ -53,13 +53,10 @@ class Deck:
 					j = "Hearts"
 				elif j is 4:
 					j = "Spades"
-				deck.append((i,j))
-		x = random.randrange(len(deck))
-		status = "\n"+str(deck[x][0])+" of "+str(deck[x][1])
-		return status		
-		# for x in deck:
-		# 	status += "\n"+str(x[0])+" of "+str(x[1])
-		# return status
+				deck.append((i,j))		
+		for x in deck:
+			status += "\n"+str(x[0])+" of "+str(x[1])
+		return status
 		# print(str(x[0])+" of "+str(x[1]))
 		# print(str(i)+" of "+str(j))
 
