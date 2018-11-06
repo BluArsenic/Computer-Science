@@ -1,3 +1,5 @@
+import random
+
 class Deck:
 	def __init__(self):
 		self.deck = []
@@ -23,10 +25,26 @@ class Deck:
 		self.shuffle()
 
 	def shuffle(self):
-		random.shuffle(self.deck)	
+		random.shuffle(self.deck)
 
-	def __str__(self):
-		status = ""		
-		for x in range(len(self.deck)):
-			status += "\n"+str(self.deck[x][0])+" of "+str(self.deck[x][1])
+	def player(self):
+		status = ""
+		playerDeck = []
+		for x in range(8):
+			playerDeck.append(self.deck[x])
+			status += "\n"+str(playerDeck[x][0])+" of "+str(playerDeck[x][1])
+		status = "\nYour Cards:"+status
 		return status
+
+	def opponent(self):
+		status = ""
+		enemyDeck = []
+		for x in range(8,16):
+			enemyDeck.append(self.deck[x])
+		status += "\nYour oppenent has "+str(len(enemyDeck))+" cards."
+		return status
+
+playerDeck = Deck()
+enemyDeck = Deck()
+print(playerDeck.player())
+print(enemyDeck.opponent())
