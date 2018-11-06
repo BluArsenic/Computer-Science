@@ -53,11 +53,13 @@ class Deck:
 					j = "Hearts"
 				elif j is 4:
 					j = "Spades"
-				deck.append((i,j))		
-		for x in deck:
-			status += "\n"+str(x[0])+" of "+str(x[1])
+				deck.append((i,j))
+		random.shuffle(deck)	
+		for x in range(len(deck)):
+			status += "\n"+str(deck[x][0])+" of "+str(deck[x][1])
 		return status
 		# print(str(x[0])+" of "+str(x[1]))
 		# print(str(i)+" of "+str(j))
 
 print(Card())
+print(Deck())
