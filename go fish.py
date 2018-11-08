@@ -47,20 +47,21 @@ class Deck:
 	def match(self):
 		status = ""
 		playerMatch = []
-		test = len(self.playerDeck)
-		for x in range(test):
-			for y in range(test):
-				print(len(self.playerDeck)-1,x,y)
-				if str(self.playerDeck[x][0]) == str(self.playerDeck[y][0]):
-					playerMatch += self.playerDeck.pop(x)
-				test -= len(playerMatch)
+		print(len(self.playerDeck)-1,x,y)
+		if the 1st inputed rank == the 2nd inputed rank:
+			playerMatch += self.playerDeck.pop(x)
 		for x in range(len(playerDeck)):
-			status = "\nYour Cards:\n"+str(self.playerMatch[x][0])+" of "+str(self.playerMatch[x][1])
+			status = "\nYour Cards:\n"+str(self.playerDeck[x][0])+" of "+str(self.playerDeck[x][1])
+		for x in range(len(playerMatch)):
+			matches = "\nYou have "+(len(playerMatch)/2)+" matches."
+		print(matches)
 		return status
 
 playerDeck = Deck()
 enemyDeck = Deck()
 print(playerDeck.player())
 print(enemyDeck.opponent())
+inputOne = int(input("Enter the position of the first matching card: "))-1
+inputTwo = int(input("Enter the position of the second matching card: "))-1
 # playerDeck.match()
-print(playerDeck.match())
+# print(playerDeck.match())
