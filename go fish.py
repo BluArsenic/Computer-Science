@@ -49,11 +49,11 @@ class Deck:
 		playerMatch = []
 		if self.playerDeck[x][0] == self.playerDeck[y][0]:
 			playerMatch += self.playerDeck.pop(x)
-			playerMatch += self.playerDeck.pop(y)
-		for x in range(len(playerDeck)):
+			playerMatch += self.playerDeck.pop(y-1)
+		for x in range(len(self.playerDeck)):
 			status = "\nYour Cards:\n"+str(self.playerDeck[x][0])+" of "+str(self.playerDeck[x][1])
 		for x in range(len(playerMatch)):
-			matches = "\nYou have "+(len(playerMatch)/2)+" matches."
+			matches = "\nYou have "+str(len(playerMatch)/2)+" matches.\nYour Cards:\n"+str(playerMatch[x][0])+" of "+str(playerMatch[x][1])
 		print(matches)
 		return status
 
@@ -61,11 +61,11 @@ playerDeck = Deck()
 enemyDeck = Deck()
 print(playerDeck.player())
 print(enemyDeck.opponent())
-askMatch = input("Are there any matching cards? Y or N: ")
+askMatch = input("\nAre there any matching cards? Y or N: ")
 askMatch = askMatch.lower()
 if askMatch == "y":
-	inputOne = int(input("Enter the position of the first matching card: "))-1
-	inputTwo = int(input("Enter the position of the second matching card: "))-1
+	inputOne = int(input("\nEnter the position of the first matching card: "))-1
+	inputTwo = int(input("\nEnter the position of the second matching card: "))-1
 	print(playerDeck.match(inputOne, inputTwo))
 else:
 	print(playerDeck.player())
