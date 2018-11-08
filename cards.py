@@ -27,6 +27,7 @@ class Card:
 				card.append((i,j))
 		x = random.randrange(len(card))
 		status = "\n"+str(card[x][0])+" of "+str(card[x][1])
+		# print(card)
 		return status
 
 class Deck:
@@ -64,8 +65,4 @@ class Deck:
 
 print(Card())
 mydeck = Deck()
-print(mydeck)
-print(mydeck)
-print(mydeck)
-print(mydeck)
 print(mydeck)
