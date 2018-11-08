@@ -3,6 +3,8 @@ import random
 class Deck:
 	def __init__(self):
 		self.deck = []
+		self.playerDeck = []
+		self.enemyDeck = []
 		for i in range(1,14):
 			for j in range(1,5):
 				if i is 1:
@@ -29,22 +31,36 @@ class Deck:
 
 	def player(self):
 		status = ""
-		playerDeck = []
-		for x in range(8):
-			playerDeck.append(self.deck[x])
-			status += "\n"+str(playerDeck[x][0])+" of "+str(playerDeck[x][1])
+		for x in range(7):
+			self.playerDeck.append(self.deck[x])
+			status += "\n"+str(self.playerDeck[x][0])+" of "+str(self.playerDeck[x][1])
 		status = "\nYour Cards:"+status
 		return status
 
 	def opponent(self):
 		status = ""
-		enemyDeck = []
-		for x in range(8,16):
-			enemyDeck.append(self.deck[x])
-		status += "\nYour oppenent has "+str(len(enemyDeck))+" cards."
+		for x in range(8,15):
+			self.enemyDeck.append(self.deck[x])
+		status += "\nYour oppenent has "+str(len(self.enemyDeck))+" cards."
+		return status
+
+	def match(self):
+		status = ""
+		playerMatch = []
+		test = len(self.playerDeck)
+		for x in range(test):
+			for y in range(test):
+				print(len(self.playerDeck)-1,x,y)
+				if str(self.playerDeck[x][0]) == str(self.playerDeck[y][0]):
+					playerMatch += self.playerDeck.pop(x)
+				test -= len(playerMatch)
+		for x in range(len(playerDeck)):
+			status = "\nYour Cards:\n"+str(self.playerMatch[x][0])+" of "+str(self.playerMatch[x][1])
 		return status
 
 playerDeck = Deck()
 enemyDeck = Deck()
 print(playerDeck.player())
 print(enemyDeck.opponent())
+# playerDeck.match()
+print(playerDeck.match())
