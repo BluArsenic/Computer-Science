@@ -66,7 +66,7 @@ class Deck:
 		status = "\nYour Cards:"+status
 		for x in range(len(playerMatch)):
 			matches += "\n"+str(playerMatch[x][0])+" of "+str(playerMatch[x][1])
-		matches = "\nYou have "+str(len(playerMatch)/2)+" matches.\n\nYour Cards:" + matches
+		matches = "\nYou have "+str(len(playerMatch)/2)+" matches.\n\nYour Matches:" + matches
 		print(matches)
 		return status
 
@@ -80,6 +80,7 @@ if askMatch == "y":
 	inputOne = int(input("\nEnter the position of the first matching card: "))-1
 	inputTwo = int(input("\nEnter the position of the second matching card: "))-1
 	print(playerDeck.match(inputOne, inputTwo))
+	print(enemyDeck.opponentHand())
 else:
 	print(playerDeck.playerHand())
 	print(enemyDeck.opponentHand())
