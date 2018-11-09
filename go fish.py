@@ -29,7 +29,7 @@ class Deck:
 	def shuffle(self):
 		random.shuffle(self.deck)
 
-	def player(self):
+	def playerAdd(self):
 		status = ""
 		for x in range(7):
 			self.playerDeck.append(self.deck[x])
@@ -37,30 +37,43 @@ class Deck:
 		status = "\nYour Cards:"+status
 		return status
 
-	def opponent(self):
+	def opponentAdd(self):
 		status = ""
 		for x in range(8,15):
 			self.enemyDeck.append(self.deck[x])
 		status += "\nYour oppenent has "+str(len(self.enemyDeck))+" cards."
 		return status
 
+	def playerHand(self):
+		status = ""
+		status = "\nYour Cards:\n"+str(self.playerDeck[x][0])+" of "+str(self.playerDeck[x][1])
+		return status
+
+	def opponentHand(self):
+		status = ""
+		status += "\nYour oppenent has "+str(len(self.enemyDeck))+" cards."
+		return status
+
 	def match(self, x, y):
 		status = ""
+		matches = ""
 		playerMatch = []
 		if self.playerDeck[x][0] == self.playerDeck[y][0]:
-			playerMatch += self.playerDeck.pop(x)
-			playerMatch += self.playerDeck.pop(y-1)
+			playerMatch.append(self.playerDeck.pop(x))
+			playerMatch.append(self.playerDeck.pop(y-1))
 		for x in range(len(self.playerDeck)):
-			status = "\nYour Cards:\n"+str(self.playerDeck[x][0])+" of "+str(self.playerDeck[x][1])
+			status += "\n"+str(self.playerDeck[x][0])+" of "+str(self.playerDeck[x][1])
+		status = "\nYour Cards:"+status
 		for x in range(len(playerMatch)):
-			matches = "\nYou have "+str(len(playerMatch)/2)+" matches.\nYour Cards:\n"+str(playerMatch[x][0])+" of "+str(playerMatch[x][1])
+			matches += "\n"+str(playerMatch[x][0])+" of "+str(playerMatch[x][1])
+		matches = "\nYou have "+str(len(playerMatch)/2)+" matches.\n\nYour Cards:" + matches
 		print(matches)
 		return status
 
 playerDeck = Deck()
 enemyDeck = Deck()
-print(playerDeck.player())
-print(enemyDeck.opponent())
+print(playerDeck.playerAdd())
+print(enemyDeck.opponentAdd())
 askMatch = input("\nAre there any matching cards? Y or N: ")
 askMatch = askMatch.lower()
 if askMatch == "y":
@@ -68,5 +81,5 @@ if askMatch == "y":
 	inputTwo = int(input("\nEnter the position of the second matching card: "))-1
 	print(playerDeck.match(inputOne, inputTwo))
 else:
-	print(playerDeck.player())
-	print(enemyDeck.opponent())
+	print(playerDeck.playerHand())
+	print(enemyDeck.opponentHand())
