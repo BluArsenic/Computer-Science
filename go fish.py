@@ -1,6 +1,7 @@
 import random
 
 class Deck:
+	# creates the game deck and the player's decks/hands
 	def __init__(self):
 		self.deck = []
 		self.playerDeck = []
@@ -24,36 +25,43 @@ class Deck:
 				elif j is 4:
 					j = "Spades"
 				self.deck.append((i,j))
+		# calls the shuffle function
 		self.shuffle()
 
+	# shuffles the deck
 	def shuffle(self):
 		random.shuffle(self.deck)
 
+	# takes the top 7 cards of the deck and adds them to the player's hand 
 	def playerAdd(self):
 		status = ""
 		for x in range(7):
-			self.playerDeck.append(self.deck[x])
+			self.playerDeck.append(self.deck.pop(x))
 			status += "\n"+str(self.playerDeck[x][0])+" of "+str(self.playerDeck[x][1])
 		status = "\nYour Cards:"+status
 		return status
 
+	# takes the next top 7 cards of the deck and adds them to the opponent's hand 
 	def opponentAdd(self):
 		status = ""
 		for x in range(8,15):
-			self.enemyDeck.append(self.deck[x])
+			self.enemyDeck.append(self.deck.pop(x))
 		status += "\nYour oppenent has "+str(len(self.enemyDeck))+" cards."
 		return status
 
+	# displays the player's hand
 	def playerHand(self):
 		status = ""
 		status = "\nYour Cards:\n"+str(self.playerDeck[x][0])+" of "+str(self.playerDeck[x][1])
 		return status
 
+	#displays the amount of cards in the opponent's hand
 	def opponentHand(self):
 		status = ""
 		status += "\nYour oppenent has "+str(len(self.enemyDeck))+" cards."
 		return status
 
+	#checks if the inputted card positions match; if they do, they get added to the "matches" (the matches list)
 	def match(self, x, y):
 		status = ""
 		matches = ""
