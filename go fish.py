@@ -1,3 +1,24 @@
+# Dominic T.
+# 10/6/18
+#For my project, I decided to code "Go Fish!" The rules of the game are as follows:
+# 1) Deal 7 cards to each player √
+# 2) If you have matches within your dealt cards, set those aside √
+# 3) Ask if they have *blank* card√
+# 4) If the oppenent has *blank* card...
+# 	i. They give you all their cards card
+# 	ii. Once the card is given, you set the match aside
+# 	iii. Repeat at step 3
+# 5) If the oppenent does not have *blank* card...
+# 	i. The oppenent says "Go fish"
+# 	ii. You take a card from the remaining pile of undealt cards
+# 	iii. If you have matching cards, set them aside
+# 6) Switch turns
+# 7) Repeat process until there are no more unmatched cards
+# 8) Whoever has the most matches wins
+# - The cards have to be matched with suit, not rank √
+# - The matches are in pairs of 2 √
+# ON MY HONOR, I HAVE NEITHER GIVEN NOR RECIEVED UNAUTHORIZED AID
+
 import random
 
 class Deck:
