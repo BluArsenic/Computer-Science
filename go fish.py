@@ -118,7 +118,9 @@ class Deck:
 	def mechanics(self):
 		ask = int(input("\nSelect the position (a number) you want to ask for: "))
 		for y in range(len(self.enemyDeck)):
-			if self.enemyDeck[y][0] == self.playerDeck[ask][0]:
+			if self.enemyDeck[y][0] != self.playerDeck[ask][0]:
+				print("Go fish!")
+				self.playerDeck.append(self.deck.pop(0))
 				self.oppMechanics()
 			elif self.enemyDeck[y][0] == self.playerDeck[ask][0]:
 				self.playerDeck.append(self.enemyDeck[y])
@@ -133,6 +135,8 @@ class Deck:
 		ask = int(input("\nSelect the position (a number) you want to ask for: "))
 		for x in range(len(self.playerDeck)):
 			if self.playerDeck[y][0] != self.enemyDeck[random.randint(len(self.enemyDeck))][0]:
+				print("Go fish!")
+				self.enemyDeck.append(self.deck.pop(0))
 				self.mechanics()
 			elif self.playerDeck[y][0] == self.enemyDeck[random.randint(len(self.enemyDeck))][0]:
 				self.enemyDeck.append(self.playerDeck[y])
