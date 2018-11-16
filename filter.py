@@ -1,10 +1,20 @@
 from PIL import Image, ImageDraw
+import random
 
-imgx = 256
-image = Image.new('RGBA',(imgx,imgx), (255))
+r = random.randint(0,255)
+g = random.randint(0,255)
+b = random.randint(0,255)
+
+imgx = 178
+img = Image.new("RGB", (imgx, imgx))
 
 for x in range(imgx):
 	for y in range(imgx):
-		image.putpixel((x,y),(0,255,0,0))
+		img.putpixel((x,y),(r,g,b))
 
-Image.blend(image, image, .3).show("test.png", "PNG")
+img.save("color.png", "PNG")
+
+picture = Image.open("color.png")
+image = Image.open("doggo.jpeg")
+
+Image.blend(image, picture, .5).show("test.png", "PNG")
