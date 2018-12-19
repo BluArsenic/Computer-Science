@@ -111,8 +111,12 @@ while i<58:
    A girl in your class has jellybeans in a 
    jar. The number of jellybeans is stored in int beans. Every day she shares one jellybean with every student in the class, and she herself takes two. The number of students in the class is held in variable students (int). Write a loop that determines how many days it will take for her to run out of jellybeans. You can store the result in variable numDays (int).
 '''
- 
- 
+students = 10
+beans = 100
+while beans>0:
+  beans -= students+2
+  days = beans/students+2
+print("It will take "+str(days)+" days to run out of jellybeans.")
  
 ''' 10. 
    Today is the 14th of December. Vacation starts on firstDayOfVacation (int). Assuming your vacation starts in December, write a loop that will count down the number of days until your vacation starts. It's output should be something like: "10 days until vacation!" "9 days until vacation!" ... "1 day until vacation!" "Vacation has arrived!"
@@ -123,7 +127,13 @@ while i<58:
 ''' 11. 
    Write a loop that will calculate n factorial. The sum should be stored in result (int).
 '''
- 
+def factorial(x):
+  if x is 1:
+    return 1
+  return x*factorial(x-1)
+num = int(input("N:"))
+result = factorial(num)
+print(result)
  
  
 ''' 12. 
@@ -135,7 +145,12 @@ while i<58:
 ''' 13.  
    Write a loop that, given a number, n, will determine the value of n to the power of b. Store the result in variable exponent (int). 
 '''
- 
+# n = 4
+# b = 6
+# while n < n**b:
+#   n = n*n
+# print(n)
+
  
  
 ''' 14. 
@@ -144,9 +159,11 @@ while i<58:
  
  
 ''' 15. 
-   Now write a loop that will print out "A is a vowel." "B is a consonant." "C is a consonant." and so on. 
+   Now write a loop that will print out "A is a vowel." "B is a consonant." "C is a consonant." and so on.
 '''
- 
+for x in range(26):
+  alpha = 65+x
+print(alpha)
  
  
 ''' 16. 
