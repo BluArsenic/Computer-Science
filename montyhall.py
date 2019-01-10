@@ -26,9 +26,10 @@ def switch(runs):
 		shuffle(box)
 		# "Chooses" box
 		chosen.append(box.pop(r.randrange(3)))
+		variable = r.randrange(len(box))
 		# "Reveals" one of the penny boxes; deletes that penny box from the box list
-		if box[r.randrange(len(box))] is 0 or box[r.randrange(len(box))] is 1: #2 is current length of box list
-			del box[r.randrange(len(box))]
+		if box[variable] is 0 or box[variable] is 1: #2 is current length of box list
+			del box[variable]
 		# "Switches" chosen box
 		box.append(chosen.pop(-1))
 		chosen.append(box.pop(0))
@@ -66,9 +67,7 @@ def stickWith(runs):
 stickWith(1000)
 
 '''
-I wasn't surprised overall seeing the results of the trials
-since the every trial is basically a 33/33/33 chance.
-I was surprised, however, when my first runthrough
-of my program had the same amount of keys chosen, switching
-or not switching.
+I was surprised that your twice as likely to win
+when switching, but I wasn't surprised seeing the results of
+keeping your box since the every trial is basically a 33/33/33 chance.
 '''
