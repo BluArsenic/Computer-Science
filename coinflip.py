@@ -6,38 +6,38 @@
 '''
 import random
 import collections as c
+import matplotlib.pyplot as pyp
 
 i = 0
 j = 0
 # with counter
-while i<10:
+while i<1000:
 	data = []
 	for x in range(10):
 		coin = random.randint(1,2)
 		if coin is 1:
-			coin == "Heads"
-			data.append(coin)
-		elif coin is 2:
-			coin == "Tails"
 			data.append(coin)
 	print(c.Counter(data))
 	i += 1
 
+pyp.plot(data)
+pyp.show()
+
 # without counter
-while j<10:
-	data = [] # data of coin flips
-	dataHead = [] # data of "heads" amount
-	dataNum = [] # data of of how many heads in numbers
-	for x in range(10):
-		coin = random.randint(1,2)
-		if coin is 1:
-			coin == "Heads"
-			data.append(coin)
-			dataHead.append(coin)
-		elif coin is 2:
-			coin == "Tails"
-			data.append(coin)
-	dataNum.append(len(dataHead))
-	# print(data)
-	print(dataNum)
-	j += 1
+# while j<10:
+# 	data = [] # data of coin flips
+# 	dataHead = [] # data of "heads" amount
+# 	dataNum = [] # data of of how many heads in numbers
+# 	for x in range(10):
+# 		coin = random.randint(1,2)
+# 		if coin is 1:
+# 			coin == "Heads"
+# 			data.append(coin)
+# 			dataHead.append(coin)
+# 		elif coin is 2:
+# 			coin == "Tails"
+# 			data.append(coin)
+# 	dataNum.append(len(dataHead))
+# 	# print(data)
+# 	print(dataNum)
+# 	j += 1
