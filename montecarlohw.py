@@ -23,7 +23,6 @@ def dartboard(throws):
 		x , xC = 0 , 0
 		y , yC = 0 , 0
 		center = (xC,yC)
-		dart = (x,y)
 		radius = 1
 		throwDart = (r.uniform(-1,1),r.uniform(-1,1))
 		(x,y) = throwDart
@@ -33,9 +32,10 @@ def dartboard(throws):
 		times += 1
 	return (success*4)/throws
 
-print(dartboard(100000))
+print(dartboard(1000000))
 
 # 100 times, the number was always around 3
 # 1000 times, the number is still around 3
 # Same for 10000
 # Same for 100000
+# I'm just realizing know that it's pi...
