@@ -15,63 +15,56 @@ Do you have the E&R Laundry Service?
 import random as r
 import collections as c
 
-day = r.randint(1,7) # 1 being Sunday, 7 being Saturday
-time = r.randint(1,4) # 1 is morning, 2 afternoon, 3 evening, 4 night
-er = r.randint(0,1) # 0 is no, 1 is yes
-students = 100
-times = 0
-data = []
-
 def whichDay():
-	global day
-	if day is 1:
-		day = 'Sunday'
-	elif day is 2:
-		day = 'Monday'
-	elif day is 3:
-		day = 'Tuesday'
-	elif day is 4:
-		day = 'Wednesday'
-	elif day is 5:
-		day = 'Thursday'
-	elif day is 6:
-		day = 'Friday'
-	else:
-		day = 'Saturday'
-	return day
+    day = r.randint(1,7) # 1 being Sunday, 7 being Saturday
+    if day is 1:
+        day = 'Sunday'
+    elif day is 2:
+        day = 'Monday'
+    elif day is 3:
+        day = 'Tuesday'
+    elif day is 4:
+        day = 'Wednesday'
+    elif day is 5:
+        day = 'Thursday'
+    elif day is 6:
+        day = 'Friday'
+    else:
+        day = 'Saturday'
 
 def whichTime():
-	global time
-	if time is 1:
-		time = 'Morning'
-	elif time is 2:
-		time = 'Afternoon'
-	elif time is 3:
-		time = 'Evening'
-	else:
-		time = 'Night/Early Morning'
-	return time
+    time = r.randint(1,4) # 1 is morning, 2 afternoon, 3 evening, 4 night
+    if time is 1:
+        time = 'Morning'
+    elif time is 2:
+        time = 'Afternoon'
+    elif time is 3:
+        time = 'Evening'
+    else:
+        time = 'Night/Early Morning'
 
 def ER():
-	global er
-	if er is 0:
-		er = 'No'
-	else:
-		er = 'Yes'
-	return er
+    global er
+    er = r.randint(0,1) # 0 is no, 1 is yes
+    if er is 0:
+        er = 'No'
+    else:
+        er = 'Yes'
 
 def calculate():
-	global times, students, data
-	while times < students:
-		whichDay()
-		whichTime()
-		ER()
-		if er == 'Yes':
-			pass
-		elif er == 'No':
-			data.append(day+time)
-		times+1
-	return data
-	return c.Couner(data)
+    students = 100
+    times = 0
+    data = []
+    while times < students:
+        whichDay()
+        whichTime()
+        ER()
+        if er == 'Yes':
+            pass
+        elif er == 'No':
+            data.append(day+time)
+        times+1
+    return data
+    return c.Couner(data)
 
 print(calculate())
