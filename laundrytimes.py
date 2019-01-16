@@ -16,6 +16,7 @@ import random as r
 import collections as c
 
 def whichDay():
+    global day
     day = r.randint(1,7) # 1 being Sunday, 7 being Saturday
     if day is 1:
         day = 'Sunday'
@@ -33,6 +34,7 @@ def whichDay():
         day = 'Saturday'
 
 def whichTime():
+    global time
     time = r.randint(1,4) # 1 is morning, 2 afternoon, 3 evening, 4 night
     if time is 1:
         time = 'Morning'
@@ -51,7 +53,7 @@ def ER():
     else:
         er = 'Yes'
 
-def calculate():
+def calculateNoER():
     students = 100
     times = 0
     data = []
@@ -62,9 +64,8 @@ def calculate():
         if er == 'Yes':
             pass
         elif er == 'No':
-            data.append(day+time)
-        times+1
+            data.append(day+" "+time)
+        times += 1
     return data
-    return c.Couner(data)
 
-print(calculate())
+print(*calculateNoER())
