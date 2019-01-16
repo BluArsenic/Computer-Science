@@ -99,6 +99,6 @@ dorm = 10
 # print(*calculateNoER(dorm))
 print(*calculateER(dorm))
 
-# 1) Figure out how to implement dorms
-# 2) Figure out how to graph
-# 3) if you remember later write it down
+# 1) Go to Squire for extra help
+#	 - Figure out how to implement dorms
+#	 - Figure out how to graph
