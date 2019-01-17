@@ -56,12 +56,6 @@ def ER(): # determines if they use E&R Laundry Service
 	else:
 		er = 'Yes'
 
-def days():
-	dayList = []
-	for x in range(6):
-		for y in range(3):
-			dayList.append((x,y))
-
 def calculateNoER():
 	washed = 0 # how many students have washed their clothes
 	dataMon = [] # data of monday washes
