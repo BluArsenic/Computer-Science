@@ -14,33 +14,34 @@ Do you have the E&R Laundry Service?
 
 import random as r
 import collections as c
+import matplotlib.pyplot as plt
 
 def whichDay(): # determines which day of the week it is
 	global day
-	day = r.randint(1,7) # 1 being Sunday, 7 being Saturday
-	if day is 1:
+	day = r.randint(0,6) # 1 being Sunday, 7 being Saturday
+	if day is 0:
 		day = 'Sunday'
-	elif day is 2:
+	elif day is 1:
 		day = 'Monday'
-	elif day is 3:
+	elif day is 2:
 		day = 'Tuesday'
-	elif day is 4:
+	elif day is 3:
 		day = 'Wednesday'
-	elif day is 5:
+	elif day is 4:
 		day = 'Thursday'
-	elif day is 6:
+	elif day is 5:
 		day = 'Friday'
 	else:
 		day = 'Saturday'
 
 def whichTime(): # determines which time of day it is
 	global time
-	time = r.randint(1,4) # 1 is morning, 2 afternoon, 3 evening, 4 night
-	if time is 1:
+	time = r.randint(0,3) # 1 is morning, 2 afternoon, 3 evening, 4 night
+	if time is 0:
 		time = 'Morning'
-	elif time is 2:
+	elif time is 1:
 		time = 'Afternoon'
-	elif time is 3:
+	elif time is 2:
 		time = 'Evening'
 	else:
 		time = 'Night/Early Morning'
@@ -55,50 +56,114 @@ def ER(): # determines if they use E&R Laundry Service
 	else:
 		er = 'Yes'
 
-def calculateNoER(dorms):
-	students = 40 # students in the dorm; 40 for reference (Tenney population)
+def days():
+	dayList = []
+	for x in range(6):
+		for y in range(3):
+			dayList.append((x,y))
+
+def calculateNoER():
 	washed = 0 # how many students have washed their clothes
-	dataNoER = [] # data of original wash days and times
-	dataDYUER = [] # data Do YOU USE ER; data that holds whether you use E&R or not
-	dataWithER = [] # data with day and times as well as if you use E&R
-	while washed < students:
+	dataMon = [] # data of monday washes
+	dataTues = [] # data of tuesday washes
+	dataWed = [] # data of wednesday washes
+	dataThurs = [] # thursday
+	dataFri = [] # friday
+	dataSat = [] # saturday
+	dataSun = [] # sunday
+	colors = r.choice(['red','orange','yellow','green','blue','purple','magenta','cyan'])
+	days = ["Mon.","Tues.","Wed.","Thurs.","Fri.","Sat.","Sun."]
+	daysResults = []
+	# for x in range(weeks): # if you want to implement weeks
+	students = 40 # students in the dorm; 40 for reference (Tenney population)
+	for washed in range(students):
 		whichDay() # gets value for day
 		whichTime() # gets vaule for time of day
 		ER() # gets value of E&R use
 		if er == 'No' or er == 'Sometimes':
-			dataNoER.append("\n"+day+" "+time)
-			dataDYUER.append("\n"+er)
-			dataWithER.append("\n"+er+" "+day+" "+time)
+			if day == 'Monday':
+				dataMon.append(time)
+			elif day == 'Tuesday':
+				dataTues.append(time)
+			elif day == 'Wednesday':
+				dataWed.append(time)
+			elif day == 'Thursday':
+				dataThurs.append(time)
+			elif day == 'Friday':
+				dataFri.append(time)
+			elif day == 'Saturday':
+				dataSat.append(time)
+			else:
+				dataSun.append(time)
 		washed += 1
-	print(len(dataNoER), c.Counter(dataDYUER))
-	return dataWithER
+	daysResults.append(len(dataMon))
+	daysResults.append(len(dataTues))
+	daysResults.append(len(dataWed))
+	daysResults.append(len(dataThurs))
+	daysResults.append(len(dataFri))
+	daysResults.append(len(dataSat))
+	daysResults.append(len(dataSun))
+	plt.bar(days, daysResults, .8, color = colors)
+	plt.title("Days Students W/O E&R Wash Their Clothes in Tenney")
+	plt.savefig("laundry1.png")
+	plt.show()
+	return daysResults,len(dataMon),len(dataTues),len(dataWed),len(dataThurs),len(dataFri),len(dataSat),len(dataSun)
 	
-def calculateER(dorms):
-	students = 40
+def calculateER():
 	washed = 0
-	dataER = [] # data of all students; who doesn't use, who does use, and who sometimes uses E&R
-	dataDYUER = []
-	dataWithER = []
-	while washed < students:
+	dataMon = []
+	dataTues = []
+	dataWed = []
+	dataThurs = []
+	dataFri = []
+	dataSat = []
+	dataSun = []
+	dataNONE = []
+	colors = r.choice(['red','orange','yellow','green','blue','purple','magenta','cyan'])
+	days = ["Mon.","Tues.","Wed.","Thurs.","Fri.","Sat.","Sun.","None"]
+	daysResults = []
+	# for x in range(weeks):
+	students = 40
+	for washed in range(students):
 		whichDay()
 		whichTime()
 		ER()
 		if er == 'Yes':
-			dataER.append("\nNONE")
-			dataDYUER.append("\n"+er)
-			dataWithER.append("\n"+er)
+			dataNONE.append("None")
+		elif day == 'Monday':
+			dataMon.append(time)
+		elif day == 'Tuesday':
+			dataTues.append(time)
+		elif day == 'Wednesday':
+			dataWed.append(time)
+		elif day == 'Thursday':
+			dataThurs.append(time)
+		elif day == 'Friday':
+			dataFri.append(time)
+		elif day == 'Saturday':
+			dataSat.append(time)
 		else:
-			dataER.append("\n"+day+" "+time)
-			dataDYUER.append("\n"+er)
-			dataWithER.append("\n"+er+" "+day+" "+time)
+			dataSun.append(time)
 		washed += 1
-	print(len(dataER), c.Counter(dataDYUER))
-	return dataER
+	daysResults.append(len(dataMon))
+	daysResults.append(len(dataTues))
+	daysResults.append(len(dataWed))
+	daysResults.append(len(dataThurs))
+	daysResults.append(len(dataFri))
+	daysResults.append(len(dataSat))
+	daysResults.append(len(dataSun))
+	daysResults.append(len(dataNONE))
+	plt.bar(days, daysResults, .8, color = colors)
+	plt.title("Days Students With E&R Wash Their Clothes in Tenney")
+	plt.savefig("laundry2.png")
+	plt.show()
+	return daysResults
 
-dorm = 10
-# print(*calculateNoER(dorm))
-print(*calculateER(dorm))
+# weeks = 10
+print(calculateNoER())
+print(calculateER())
 
 # 1) Go to Squire for extra help
-#	 - Figure out how to implement dorms
-#	 - Figure out how to graph
+#	 - Figure out how to implement dorms √
+#	 - Figure out how to graph (kinda) √
+#	 - Work on making every dorm a different number of students... but after you're done with the assignment √
