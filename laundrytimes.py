@@ -61,10 +61,10 @@ def calculateNoER():
 	dataMon = [] # data of monday washes
 	dataTues = [] # data of tuesday washes
 	dataWed = [] # data of wednesday washes
-	dataThurs = [] # thursday
-	dataFri = [] # friday
-	dataSat = [] # saturday
-	dataSun = [] # sunday
+	dataThurs = [] # data of thursday washes
+	dataFri = [] # data of friday washes
+	dataSat = [] # data of saturday washes
+	dataSun = [] # data of sunday washes
 	colors = r.choice(['red','orange','yellow','green','blue','purple','magenta','cyan'])
 	days = ["Mon.","Tues.","Wed.","Thurs.","Fri.","Sat.","Sun."]
 	daysResults = []
@@ -102,62 +102,56 @@ def calculateNoER():
 	plt.savefig("laundry1.png")
 	plt.show()
 	return daysResults,len(dataMon),len(dataTues),len(dataWed),len(dataThurs),len(dataFri),len(dataSat),len(dataSun)
-	
-def calculateER():
-	washed = 0
-	dataMon = []
-	dataTues = []
-	dataWed = []
-	dataThurs = []
-	dataFri = []
-	dataSat = []
-	dataSun = []
-	dataNONE = []
-	colors = r.choice(['red','orange','yellow','green','blue','purple','magenta','cyan'])
-	days = ["Mon.","Tues.","Wed.","Thurs.","Fri.","Sat.","Sun.","None"]
-	daysResults = []
-	# for x in range(weeks):
-	students = 40
-	for washed in range(students):
-		whichDay()
-		whichTime()
-		ER()
-		if er == 'Yes':
-			dataNONE.append("None")
-		elif day == 'Monday':
-			dataMon.append(time)
-		elif day == 'Tuesday':
-			dataTues.append(time)
-		elif day == 'Wednesday':
-			dataWed.append(time)
-		elif day == 'Thursday':
-			dataThurs.append(time)
-		elif day == 'Friday':
-			dataFri.append(time)
-		elif day == 'Saturday':
-			dataSat.append(time)
-		else:
-			dataSun.append(time)
-		washed += 1
-	daysResults.append(len(dataMon))
-	daysResults.append(len(dataTues))
-	daysResults.append(len(dataWed))
-	daysResults.append(len(dataThurs))
-	daysResults.append(len(dataFri))
-	daysResults.append(len(dataSat))
-	daysResults.append(len(dataSun))
-	daysResults.append(len(dataNONE))
-	plt.bar(days, daysResults, .8, color = colors)
-	plt.title("Days Students With E&R Wash Their Clothes in Tenney")
-	plt.savefig("laundry2.png")
-	plt.show()
-	return daysResults
 
 # weeks = 10
 print(calculateNoER())
-print(calculateER())
 
-# 1) Go to Squire for extra help
-#	 - Figure out how to implement dorms √
-#	 - Figure out how to graph (kinda) √
-#	 - Work on making every dorm a different number of students... but after you're done with the assignment √
+# def calculateER(): # skews the results with the E&R results; if you want to add it back in, you can. That's why I'm leaving it commented.
+# 	washed = 0
+# 	dataMon = []
+# 	dataTues = []
+# 	dataWed = []
+# 	dataThurs = []
+# 	dataFri = []
+# 	dataSat = []
+# 	dataSun = []
+# 	dataNONE = []
+# 	colors = r.choice(['red','orange','yellow','green','blue','purple','magenta','cyan'])
+# 	days = ["Mon.","Tues.","Wed.","Thurs.","Fri.","Sat.","Sun.","None"]
+# 	daysResults = []
+# 	# for x in range(weeks):
+# 	students = 40
+# 	for washed in range(students):
+# 		whichDay()
+# 		whichTime()
+# 		ER()
+# 		if er == 'Yes':
+# 			dataNONE.append("None")
+# 		elif day == 'Monday':
+# 			dataMon.append(time)
+# 		elif day == 'Tuesday':
+# 			dataTues.append(time)
+# 		elif day == 'Wednesday':
+# 			dataWed.append(time)
+# 		elif day == 'Thursday':
+# 			dataThurs.append(time)
+# 		elif day == 'Friday':
+# 			dataFri.append(time)
+# 		elif day == 'Saturday':
+# 			dataSat.append(time)
+# 		else:
+# 			dataSun.append(time)
+# 		washed += 1
+# 	daysResults.append(len(dataMon))
+# 	daysResults.append(len(dataTues))
+# 	daysResults.append(len(dataWed))
+# 	daysResults.append(len(dataThurs))
+# 	daysResults.append(len(dataFri))
+# 	daysResults.append(len(dataSat))
+# 	daysResults.append(len(dataSun))
+# 	daysResults.append(len(dataNONE))
+# 	plt.bar(days, daysResults, .8, color = colors)
+# 	plt.title("Days Students With E&R Wash Their Clothes in Tenney")
+# 	plt.savefig("laundry2.png")
+# 	plt.show()
+# 	return
