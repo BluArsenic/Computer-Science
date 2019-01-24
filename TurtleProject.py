@@ -92,7 +92,7 @@ turtle.undo()
 # If the inputed speed is greater than 10 or less than .5, then speed is set to 0
 # If there is no inputed speed, then it returns the current speed value
 # You can also use speed strings: fastest = 0, fast = 10, normal = 6, slow = 3, slowest = 1
-turtle.speed(fastest)
+turtle.speed("fastest")
 turtle.speed(1)
 turtle.speed()
 
@@ -138,16 +138,16 @@ turtle.radians()
 
 #Drawing State
 
+# Pulls the pen up (no drawing when the turtle moves)
+turtle.penup()
+turtle.pu()
+turtle.up()
+
 # Puts the pen down (draws when the turtle moves)
 # You can use any of these methods
 turtle.pendown()
 turtle.pd()
 turtle.down()
-
-# Pulls the pen up (no drawing when the turtle moves)
-turtle.penup()
-turtle.pu()
-turtle.up()
 
 # Returns the pen's attributes in a dictionary
 # Tells you pen color, whether the pen is down or up, pensize, speed, etc.
@@ -162,8 +162,56 @@ turtle.isdown()
 # -----------------------------------------------
 
 #Color
-#Fill(ing)
+
+# Returns or sets the pen color
+# Can accept a colorstring (includes hex codes in the form of strings)
+# Can accept and RGB value in the form of a tuple or individual numbers
+turtle.colormode(255)
+turtle.pencolor()
+turtle.pencolor("red")
+turtle.pencolor("#ff6100")
+turtle.pencolor((0,255,0))
+turtle.pencolor(0,0,255)
+
+# Returns or sets the fill color
+# Accepts the same arguments as pencolor
+turtle.colormode(255)
+turtle.fillcolor()
+turtle.fillcolor("red")
+turtle.fillcolor("#ff6100")
+turtle.fillcolor((0,255,0))
+turtle.fillcolor(0,0,255)
+
+# Returns or sets the pen and fill color
+# Accepts the same arguments and pencolor
+turtle.color()
+turtle.color("blue") #sets both pen and fill color
+turtle.color((255,0,0),(0,255,0)) #sets pen color first, then fill color second
+
+# ------------------------------------------
+
+#Fill
+
+# Returns the fill state (True if ther is fillig, False if not)
+turtle.filling()
+
+# Is called before drawing a shape that is going to be filled
+turtle.begin_fill()
+
+# Fills the shape rawn after the last begin_fill call
+turtle.circle(100)
+turtle.end_fill()
+
+# ---------------------------------------------
+
 #Drawing Control
+
+# Resets canvas and turtle
+turtle.reset()
+
+#
+
+
 #Turtle Visibility
 #Turtle Appearance
 #Using Events (?)
