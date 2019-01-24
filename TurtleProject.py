@@ -1,5 +1,5 @@
-#Before you can use any off these functions, you first have to import turtle
-
+# Before you can use any off these functions, you first have to import turtle
+# Make little independent scenarios
 import turtle
 
 # 1) Draw
@@ -78,9 +78,89 @@ turtle.stamp()
 stampID = 5
 turtle.clearstamp(stampID)
 
+# Deletes all turtle stamps
+# If there is no parameter (a number), then it deletes all stamps
+# If there is a positive parameter, it deletes the first 'n' stamps
+# If there is a negative parameter, it deltes the last 'n' stamps
+turtle.clearstamps()
+
+# Undoes the the turtle's last action
+turtle.undo()
+
+# Set's the turtle's speed between 0 and 10
+# If the speed is 0, then there is no drawing animation
+# If the inputed speed is greater than 10 or less than .5, then speed is set to 0
+# If there is no inputed speed, then it returns the current speed value
+# You can also use speed strings: fastest = 0, fast = 10, normal = 6, slow = 3, slowest = 1
+turtle.speed(fastest)
+turtle.speed(1)
+turtle.speed()
+
+# ------------------------------------------
+
 #The Turtle's Postions
+
+# Returns the current location of the turtle as coordinates.
+# Either moethod works
+turtle.position()
+turtle.pos()
+
+# Returns the angle of line between the turtle's postion and the position specified by coordinates of another turtle
+# You can either use an x and y value, or your x value can be a pair of coordinates
+turtle.towards(0,0)
+
+# Returns the turtle's x coord.
+turtle.xcor()
+
+# Returns the turtle's y coord.
+turtle.ycor()
+
+# Returns the turtle's current orientation or heading
+turtle.heading()
+
+# Returns the distance from the turtle to a given coordinate or other turtle
+# You can either give an x and y value, or your x value can be a pair of coordinates
+turtle.distance(50,50)
+
+# --------------------------------------
+
 #Measurement
+
+# Set angle measurement units (set numbr of "degree" for a full circle)
+# Default value is 360 degrees
+turtle.degrees(360)
+
+# Set the angle measurement units to radians
+# Radians are equivalent to degrees(2*math.pi)
+turtle.radians()
+
+# -----------------------------------------
+
 #Drawing State
+
+# Puts the pen down (draws when the turtle moves)
+# You can use any of these methods
+turtle.pendown()
+turtle.pd()
+turtle.down()
+
+# Pulls the pen up (no drawing when the turtle moves)
+turtle.penup()
+turtle.pu()
+turtle.up()
+
+# Returns the pen's attributes in a dictionary
+# Tells you pen color, whether the pen is down or up, pensize, speed, etc.
+# The dictionary can be used as the pen argument, where pen is a dictionary
+# The pendict parameter is one of more of the keyword arguments that are in the list
+penstate = turtle.pen()
+turtle.pen(penstate, fillcolor = "yellow")
+
+# Returns True is the pen is down and False if it's up
+turtle.isdown()
+
+# -----------------------------------------------
+
 #Color
 #Fill(ing)
 #Drawing Control
