@@ -101,7 +101,7 @@ turtle.speed()
 #The Turtle's Postions
 
 # Returns the current location of the turtle as coordinates.
-# Either moethod works
+# Either method works
 turtle.position()
 turtle.pos()
 
@@ -192,7 +192,7 @@ turtle.color((255,0,0),(0,255,0)) #sets pen color first, then fill color second
 
 #Fill
 
-# Returns the fill state (True if ther is fillig, False if not)
+# Returns the fill state (True if there is fillig, False if not)
 turtle.filling()
 
 # Is called before drawing a shape that is going to be filled
@@ -209,11 +209,52 @@ turtle.end_fill()
 # Resets canvas and turtle
 turtle.reset()
 
-#
+# Deletes the turtle's drawings, but does not affect the turtle
+turtle.clear()
 
+# Write text
+# The four arguments in order are the string of text, whether you want to move the pen,
+# how you want to align it, and the font
+turtle.write("This is text!", True, align = "center", font = ("Calibri",12,"bold"))
+
+# -----------------------------------------------
 
 #Turtle Visibility
+
+# Makes the turtle invisible. Both methods work
+turtle.hideturtle()
+turtle.ht()
+
+# Makes the turtle visible
+turtle.showturtle()
+turtle.st()
+
+# Tells you if your turtle is visible or not
+# Returns true is visible
+turtle.isvisible()
+
+# ------------------------------------------------
+
 #Turtle Appearance
+
+# Sets the turtle shape to a given, valid shapename in the form of a string
+# If there is no given shapename, then it returns the current turtle shape
+turtle.shape("triangle")
+turtle.shape()
+
+# Chanes the size of the turtle; if no string is given, then it returns the current resize mode
+# "auto": changes the turtle corresponding to the pensize
+# "user": changes the turtle according to the stretch factor and outline width
+# "noresize": no change is made to the turtle appearance
+turtle.resizemode("auto")
+
+# Returns or sets the pen's attributes (x/y stretchfactors and/or outline)
+# First value is the stretch width, second is the stretch len, and third is the outline; all values are positive
+# Either method works
+turtle.shapesize(2, 3, 6)
+turtle.turtlesize()
+
+
 #Using Events (?)
 #Special Turtle Fuctions/Methods
 #Window Control
